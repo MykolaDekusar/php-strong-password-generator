@@ -1,6 +1,6 @@
 <?php
+$l_password = $_GET['lunghezzaP'] ?? 0;
 require __DIR__ . '/functions.php';
-var_dump($_SESSION['password']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,16 +18,30 @@ var_dump($_SESSION['password']);
             <label for="lunghezzaP">Inserisci lunghezza password</label>
             <input type="text" name="lunghezzaP">
             <button>Invia</button>
+            <div>
+                <input type="checkbox" name="lettere">
+                <label for="lettere">Vuoi lettere nella password?</label>
+            </div>
+            <div>
+                <input type="checkbox" name="numeri">
+                <label for="numeri">Vuoi numeri nella password?</label>
+            </div>
+            <div>
+                <input type="checkbox" name="speciali">
+                <label for="speciali">Vuoi caratteri speciali nella password?</label>
+            </div>
         </form>
 
     </section>
     <section>
-        <h2>Ecco la tua password:</h2>
-        <?php if ($l_password > 0) : ?>
+        <?php if ($l_password  >= 8) : ?>
             <?php $_SESSION['length'] = $l_password; ?>
             <?php header('Location: ./showPassword.php'); ?>
         <?php else : ?>
-            <p>Errore hai inserito 0 caratteri</p>
+            <p>Se non selezioni nulla la tua password avrà tutte le caratteristiche</p>
+        <?php endif; ?>
+        <?php if ($l_password < 8) : ?>
+            <p>Inserisci un numero di almeno 8 caratteri</p>
         <?php endif; ?>
     </section>
 </body>

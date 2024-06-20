@@ -1,5 +1,8 @@
 <?php
-require __DIR__ . '/functions.php';
+require_once __DIR__ . '/functions.php';
+if ($_SESSION['length']  >= 8) {
+    header('Location: ./showPassword.php');
+};
 ?>
 <!DOCTYPE html>
 <html lang="en">

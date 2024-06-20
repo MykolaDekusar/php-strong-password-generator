@@ -1,5 +1,4 @@
 <?php
-$l_password = $_GET['lunghezzaP'] ?? 0;
 require __DIR__ . '/functions.php';
 ?>
 <!DOCTYPE html>
@@ -34,12 +33,10 @@ require __DIR__ . '/functions.php';
 
     </section>
     <section>
-        <?php if ($l_password  >= 8) : ?>
-            <?php $_SESSION['length'] = $l_password; ?>
+        <?php if ($_SESSION['length']  >= 8) : ?>
             <?php header('Location: ./showPassword.php'); ?>
-        <?php else : ?>
-            <p>Se non selezioni nulla la tua password avrà tutte le caratteristiche</p>
         <?php endif; ?>
+        <p>Se non selezioni nulla la tua password avrà tutte le caratteristiche</p>
         <?php if ($l_password < 8) : ?>
             <p>Inserisci un numero di almeno 8 caratteri</p>
         <?php endif; ?>

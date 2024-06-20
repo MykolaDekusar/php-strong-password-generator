@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/functions.php';
+var_dump($_SESSION['password']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,8 +24,8 @@ require __DIR__ . '/functions.php';
     <section>
         <h2>Ecco la tua password:</h2>
         <?php if ($l_password > 0) : ?>
-            <p>Hai inserito <?php echo $l_password; ?> caratteri</p>
-            <h3>Password: <?php echo $password; ?></h3>
+            <?php $_SESSION['length'] = $l_password; ?>
+            <?php header('Location: ./showPassword.php'); ?>
         <?php else : ?>
             <p>Errore hai inserito 0 caratteri</p>
         <?php endif; ?>

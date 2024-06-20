@@ -1,4 +1,5 @@
 <?php
+session_start();
 $l_password = $_GET['lunghezzaP'] ?? 0;
 function passwordGenerator($length)
 {
@@ -8,5 +9,6 @@ function passwordGenerator($length)
         $password .= substr(str_shuffle($data), 0, 1);
     }
     return $password;
-}
-$password = passwordGenerator($l_password);
+};
+
+$_SESSION['password'] = passwordGenerator($l_password);
